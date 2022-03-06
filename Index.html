@@ -10,227 +10,177 @@
     <link rel="stylesheet" href=".\Styles.css">
 </head>
 <body>
-    <div class="container row fixed-top">
-            <div class="row">
-                <h1 class = "col d-flex justify-content-center">~~~MakeupAPI Demo~~~</h1>
-                <hr>
-            </div>
-            <div class="row">            
-                <div class="col-4">
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for="btnradio1">Brand Name</label>
-                    
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnradio2">Item Name</label>
-                    
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnradio3">No. of Colors</label>
-                    </div>
-                </div>
-                <div class="col-8">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Choose a criteria on the left, type input & search for choices. Empty search returns entire list">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <div class="row">
+            <h1 class = "col d-flex justify-content-center">~~~MakeupAPI Demo~~~</h1>
             <hr>
-            <div class="row">
-                <div class="link-dark col-sm-12 col-md-6 col-lg-4">
-                    <a href="https://www.google.com">
-                        <div class="col" id = "cardDiv">
-                            <div id = "imageDiv">
-                                <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
-                            </div>
-                            <div id="detailsDiv">
-                                <div id="brandDiv" class="row">
-                                    <h5 class="col-4">Brand Name: </h5>
-                                    <h5 class="col-8">colourpop</h5>
-                                </div>
-                                <div id="itemDiv" class="row">
-                                    <h5 class="col-4">Item Name: </h5>
-                                    <h5 class="col-8">Lippie Pencil</h5>
-                                </div>
-                                <div id="colorCountDiv" class="row">
-                                    <h5 class="col-4">Shades available: </h5>
-                                    <h5 class="col-8">6</h5>
-                                </div>
-                                <div id="priceDiv" class="row">
-                                    <h5 class="col-4">Price: </h5>
-                                    <h5 class="col-8">$5.00 (CAD)</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="link-dark col-sm-12 col-md-6 col-lg-4">
-                    <a href="https://www.google.com">
-                        <div class="col" id = "cardDiv">
-                            <div id = "imageDiv">
-                                <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
-                            </div>
-                            <div id="detailsDiv">
-                                <div id="brandDiv" class="row">
-                                    <h5 class="col-4">Brand Name: </h5>
-                                    <h5 class="col-8">colourpop</h5>
-                                </div>
-                                <div id="itemDiv" class="row">
-                                    <h5 class="col-4">Item Name: </h5>
-                                    <h5 class="col-8">Lippie Pencil</h5>
-                                </div>
-                                <div id="colorCountDiv" class="row">
-                                    <h5 class="col-4">Shades available: </h5>
-                                    <h5 class="col-8">6</h5>
-                                </div>
-                                <div id="priceDiv" class="row">
-                                    <h5 class="col-4">Price: </h5>
-                                    <h5 class="col-8">$5.00 (CAD)</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="link-dark col-sm-12 col-md-6 col-lg-4">
-                    <a href="https://www.google.com">
-                        <div class="col" id = "cardDiv">
-                            <div id = "imageDiv">
-                                <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
-                            </div>
-                            <div id="detailsDiv">
-                                <div id="brandDiv" class="row">
-                                    <h5 class="col-4">Brand Name: </h5>
-                                    <h5 class="col-8">colourpop</h5>
-                                </div>
-                                <div id="itemDiv" class="row">
-                                    <h5 class="col-4">Item Name: </h5>
-                                    <h5 class="col-8">Lippie Pencil</h5>
-                                </div>
-                                <div id="colorCountDiv" class="row">
-                                    <h5 class="col-4">Shades available: </h5>
-                                    <h5 class="col-8">6</h5>
-                                </div>
-                                <div id="priceDiv" class="row">
-                                    <h5 class="col-4">Price: </h5>
-                                    <h5 class="col-8">$5.00 (CAD)</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="link-dark col-sm-12 col-md-6 col-lg-4">
-                    <a href="https://www.google.com">
-                        <div class="col" id = "cardDiv">
-                            <div id = "imageDiv">
-                                <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
-                            </div>
-                            <div id="detailsDiv">
-                                <div id="brandDiv" class="row">
-                                    <h5 class="col-4">Brand Name: </h5>
-                                    <h5 class="col-8">colourpop</h5>
-                                </div>
-                                <div id="itemDiv" class="row">
-                                    <h5 class="col-4">Item Name: </h5>
-                                    <h5 class="col-8">Lippie Pencil</h5>
-                                </div>
-                                <div id="colorCountDiv" class="row">
-                                    <h5 class="col-4">Shades available: </h5>
-                                    <h5 class="col-8">6</h5>
-                                </div>
-                                <div id="priceDiv" class="row">
-                                    <h5 class="col-4">Price: </h5>
-                                    <h5 class="col-8">$5.00 (CAD)</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="link-dark col-sm-12 col-md-6 col-lg-4">
-                    <a href="https://www.google.com">
-                        <div class="col" id = "cardDiv">
-                            <div id = "imageDiv">
-                                <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
-                            </div>
-                            <div id="detailsDiv">
-                                <div id="brandDiv" class="row">
-                                    <h5 class="col-4">Brand Name: </h5>
-                                    <h5 class="col-8">colourpop</h5>
-                                </div>
-                                <div id="itemDiv" class="row">
-                                    <h5 class="col-4">Item Name: </h5>
-                                    <h5 class="col-8">Lippie Pencil</h5>
-                                </div>
-                                <div id="colorCountDiv" class="row">
-                                    <h5 class="col-4">Shades available: </h5>
-                                    <h5 class="col-8">6</h5>
-                                </div>
-                                <div id="priceDiv" class="row">
-                                    <h5 class="col-4">Price: </h5>
-                                    <h5 class="col-8">$5.00 (CAD)</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="link-dark col-sm-12 col-md-6 col-lg-4">
-                    <a href="https://www.google.com">
-                        <div class="col" id = "cardDiv">
-                            <div id = "imageDiv">
-                                <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
-                            </div>
-                            <div id="detailsDiv">
-                                <div id="brandDiv" class="row">
-                                    <h5 class="col-4">Brand Name: </h5>
-                                    <h5 class="col-8">colourpop</h5>
-                                </div>
-                                <div id="itemDiv" class="row">
-                                    <h5 class="col-4">Item Name: </h5>
-                                    <h5 class="col-8">Lippie Pencil</h5>
-                                </div>
-                                <div id="colorCountDiv" class="row">
-                                    <h5 class="col-4">Shades available: </h5>
-                                    <h5 class="col-8">6</h5>
-                                </div>
-                                <div id="priceDiv" class="row">
-                                    <h5 class="col-4">Price: </h5>
-                                    <h5 class="col-8">$5.00 (CAD)</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="link-dark col-sm-12 col-md-6 col-lg-4">
-                    <a href="https://www.google.com">
-                        <div class="col" id = "cardDiv">
-                            <div id = "imageDiv">
-                                <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
-                            </div>
-                            <div id="detailsDiv">
-                                <div id="brandDiv" class="row">
-                                    <h5 class="col-4">Brand Name: </h5>
-                                    <h5 class="col-8">colourpop</h5>
-                                </div>
-                                <div id="itemDiv" class="row">
-                                    <h5 class="col-4">Item Name: </h5>
-                                    <h5 class="col-8">Lippie Pencil</h5>
-                                </div>
-                                <div id="colorCountDiv" class="row">
-                                    <h5 class="col-4">Shades available: </h5>
-                                    <h5 class="col-8">6</h5>
-                                </div>
-                                <div id="priceDiv" class="row">
-                                    <h5 class="col-4">Price: </h5>
-                                    <h5 class="col-8">$5.00 (CAD)</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnradio1">Brand Name</label>
+                
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio2">Item Name</label>
+                
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio3">No. of Colors</label>
                 </div>
             </div>
+            <div class="col-lg-8 col-sm-12">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Enter searchstring or '*' to display everything">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>    
+    <div class="container" id="displayResultsDiv">
+        <div class="row">
+            <div class="cardDiv col-sm-12 col-md-6 col-lg-4">
+                <div id = "imageDiv">
+                    <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
+                </div>
+                <div id="detailsDiv">
+                    <div id="brandDiv" class="row">
+                        <h5 class="col-4">Brand Name: </h5>
+                        <h5 class="col-8">colourpop</h5>
+                    </div>
+                    <div id="itemDiv" class="row">
+                        <h5 class="col-4">Item Name: </h5>
+                        <h5 class="col-8">Lippie Pencil</h5>
+                    </div>
+                    <div id="colorCountDiv" class="row">
+                        <h5 class="col-4">Shades available: </h5>
+                        <h5 class="col-8">6</h5>
+                    </div>
+                    <div id="priceDiv" class="row">
+                        <h5 class="col-4">Price: </h5>
+                        <h5 class="col-8">$5.00 (CAD)</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="cardDiv col-sm-12 col-md-6 col-lg-4">
+                <div id = "imageDiv">
+                    <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
+                </div>
+                <div id="detailsDiv">
+                    <div id="brandDiv" class="row">
+                        <h5 class="col-4">Brand Name: </h5>
+                        <h5 class="col-8">colourpop</h5>
+                    </div>
+                    <div id="itemDiv" class="row">
+                        <h5 class="col-4">Item Name: </h5>
+                        <h5 class="col-8">Lippie Pencil</h5>
+                    </div>
+                    <div id="colorCountDiv" class="row">
+                        <h5 class="col-4">Shades available: </h5>
+                        <h5 class="col-8">6</h5>
+                    </div>
+                    <div id="priceDiv" class="row">
+                        <h5 class="col-4">Price: </h5>
+                        <h5 class="col-8">$5.00 (CAD)</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="cardDiv col-sm-12 col-md-6 col-lg-4">
+                <div id = "imageDiv">
+                    <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
+                </div>
+                <div id="detailsDiv">
+                    <div id="brandDiv" class="row">
+                        <h5 class="col-4">Brand Name: </h5>
+                        <h5 class="col-8">colourpop</h5>
+                    </div>
+                    <div id="itemDiv" class="row">
+                        <h5 class="col-4">Item Name: </h5>
+                        <h5 class="col-8">Lippie Pencil</h5>
+                    </div>
+                    <div id="colorCountDiv" class="row">
+                        <h5 class="col-4">Shades available: </h5>
+                        <h5 class="col-8">6</h5>
+                    </div>
+                    <div id="priceDiv" class="row">
+                        <h5 class="col-4">Price: </h5>
+                        <h5 class="col-8">$5.00 (CAD)</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="cardDiv col-sm-12 col-md-6 col-lg-4">
+                <div id = "imageDiv">
+                    <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
+                </div>
+                <div id="detailsDiv">
+                    <div id="brandDiv" class="row">
+                        <h5 class="col-4">Brand Name: </h5>
+                        <h5 class="col-8">colourpop</h5>
+                    </div>
+                    <div id="itemDiv" class="row">
+                        <h5 class="col-4">Item Name: </h5>
+                        <h5 class="col-8">Lippie Pencil</h5>
+                    </div>
+                    <div id="colorCountDiv" class="row">
+                        <h5 class="col-4">Shades available: </h5>
+                        <h5 class="col-8">6</h5>
+                    </div>
+                    <div id="priceDiv" class="row">
+                        <h5 class="col-4">Price: </h5>
+                        <h5 class="col-8">$5.00 (CAD)</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="cardDiv col-sm-12 col-md-6 col-lg-4">
+                <div id = "imageDiv">
+                    <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="250" height="250">
+                </div>
+                <div id="detailsDiv">
+                    <div id="brandDiv" class="row">
+                        <h5 class="col-4">Brand Name: </h5>
+                        <h5 class="col-8">colourpop</h5>
+                    </div>
+                    <div id="itemDiv" class="row">
+                        <h5 class="col-4">Item Name: </h5>
+                        <h5 class="col-8">Lippie Pencil</h5>
+                    </div>
+                    <div id="colorCountDiv" class="row">
+                        <h5 class="col-4">Shades available: </h5>
+                        <h5 class="col-8">6</h5>
+                    </div>
+                    <div id="priceDiv" class="row">
+                        <h5 class="col-4">Price: </h5>
+                        <h5 class="col-8">$5.00 (CAD)</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="cardDiv col-sm-12 col-md-6 col-lg-4">
+                <div id = "imageDiv">
+                    <img src="https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769" alt="colourpop Lippie Pencil" width="210" height="210">
+                </div>
+                <div id="detailsDiv">
+                    <div id="brandDiv" class="row">
+                        <h5 class="col-4">Brand Name: </h5>
+                        <h5 class="col-8">colourpop</h5>
+                    </div>
+                    <div id="itemDiv" class="row">
+                        <h5 class="col-4">Item Name: </h5>
+                        <h5 class="col-8">Lippie Pencil</h5>
+                    </div>
+                    <div id="colorCountDiv" class="row">
+                        <h5 class="col-4">Shades available: </h5>
+                        <h5 class="col-8">6</h5>
+                    </div>
+                    <div id="priceDiv" class="row">
+                        <h5 class="col-4">Price: </h5>
+                        <h5 class="col-8">$5.00 (CAD)</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
     <script src=".\Script.js"></script>
 </body>
 </html>
