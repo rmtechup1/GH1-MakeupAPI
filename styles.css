@@ -1,3 +1,19 @@
 .cardDiv{
     padding: 3px;
 }
+div.titleSection{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 1px;
+    background-color: violet;
+}
+
+div.appTitle{
+    background-color: rgb(234, 255, 47);
+    /*border: 2px solid #ff0099;*/
+}
+
+.backgroundColor{
+    color:white;
+}

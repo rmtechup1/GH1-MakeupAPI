@@ -10,11 +10,11 @@
     <link rel="stylesheet" href=".\Styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container, titleSection">
+        <div class="row appTitle">
             <h1 class = "col d-flex justify-content-center">~~~MakeupAPI Demo~~~</h1>
-            <hr>
         </div>
+        <hr>
         <div class="row">
             <div class="col-lg-4 col-sm-12">
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -32,7 +32,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Enter searchstring or '*' to display everything">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Search</button>
+                        <button class="btn btn-outline-secondary bg-primary backgroundColor =" type="button">Search</button>
                     </div>
                 </div>
             </div>
@@ -90,6 +90,11 @@
             
         </div>
     </div>
+    <div style="padding-bottom:2000px">
+    <footer>
+        <a href="https://makeup-api.herokuapp.com/api/v1/products.json">baseUrl</a><br>
+        <a href="https://makeup-api.herokuapp.com/">DemoApp</a>
+    </footer>
     <script src=".\Script.js"></script>
 </body>
 </html>
