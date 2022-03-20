@@ -9,6 +9,10 @@ div.titleSection{
     background-color: violet;
 }
 
+div.links{
+    background-color: rgb(47, 255, 92);
+}
+
 div.appTitle{
     background-color: rgb(234, 255, 47);
     /*border: 2px solid #ff0099;*/
