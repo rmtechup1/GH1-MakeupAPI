@@ -171,6 +171,9 @@ async function getSearchResultsByParameter(searchParameter, searchString){
         console.log(requestUrl);
         const response = await fetch(requestUrl, { method: 'GET', mode: "cors"});
         console.log(response);
+        let respJson = await response.json();
+        console.log(respJson);
+        return respJson;
     }
     catch(error){
         console.log("error: " + error);
@@ -179,9 +182,10 @@ async function getSearchResultsByParameter(searchParameter, searchString){
 }
 
 function displayResults(responseJson){
-    let resultDisplayDiv = document.getElementById('displayArea');
+    let resultDisplayDiv = document.createElement('div');
     resultDisplayDiv.className = 'row';
-
+    resultDisplayDiv.id = 'displayArea'
+    console.log(responseJson.length);
     responseJson.forEach(mkupItem => {        
         let cardDiv = document.createElement('div');
         cardDiv.className = 'cardDiv col-sm-12 col-md-6 col-lg-4';
@@ -207,10 +211,12 @@ function displayResults(responseJson){
                     <h6 class="col-8">${mkupItem.price_sign}${mkupItem.price} (${mkupItem.currency})</h6>
                 </div>
             </div>`;
+            console.log(cardDiv);
         resultDisplayDiv.appendChild(cardDiv);
     });
     document.getElementById('displayResultsDiv').append(resultDisplayDiv);
 }
 
-
-getSearchResultsByParameter(typesOfSearchParams[0], "maybelline");
+const displayResultsJson = getSearchResultsByParameter(typesOfSearchParams[0], "maybelline");
+console.log(displayResultsJson);
+displayResults(displayResultsJson);
