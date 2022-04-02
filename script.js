@@ -1,4 +1,6 @@
 const baseUrl = "http://makeup-api.herokuapp.com/api/v1/products.json";
+const typesOfSearchParams = ['brand', 'product_type', 'product_tags']
+
 
 async function fetchAllRawData(baseUrl){
     try{
@@ -119,7 +121,7 @@ async function convertAllRawDataToCardArray(baseUrl){
     
 }
 
-convertAllRawDataToCardArray(baseUrl);
+//convertAllRawDataToCardArray(baseUrl);
 
 /*
 async function displayHomePage(baseUrl){
@@ -147,3 +149,68 @@ async function displayHomePage(baseUrl){
     searchrowDiv.className = 'row'
 }
 */
+
+
+async function getSearchResultsByParameter(searchParameter, searchString){
+    let requestUrl = baseUrl;
+    switch (searchParameter){
+        case typesOfSearchParams[0]:
+            requestUrl += ('?' + typesOfSearchParams[0] + '=' + searchString);
+            break;
+        case typesOfSearchParams[1]:
+            requestUrl += ('?' + typesOfSearchParams[1] + '=' + searchString);
+            break;
+        case typesOfSearchParams[2]:
+            requestUrl += ('?' + typesOfSearchParams[2] + '=' + searchString);
+            break;
+        default:
+            requestUrl += ('?' + typesOfSearchParams[0] + '=' + searchString);
+            break;
+    }
+    try{
+        console.log(requestUrl);
+        const response = await fetch(requestUrl, { method: 'GET', mode: "cors"});
+        console.log(response);
+    }
+    catch(error){
+        console.log("error: " + error);
+        return null;
+    }
+}
+
+function displayResults(responseJson){
+    let resultDisplayDiv = document.getElementById('displayArea');
+    resultDisplayDiv.className = 'row';
+
+    responseJson.forEach(mkupItem => {        
+        let cardDiv = document.createElement('div');
+        cardDiv.className = 'cardDiv col-sm-12 col-md-6 col-lg-4';
+        cardDiv.innerHTML = 
+            `<div class = "imageDiv">
+                <img src=${mkupItem.image_link} alt=${mkupItem.brand + " " + mkupItem.name} width="250" height="250">
+            </div>
+            <div class="detailsDiv">
+                <div class="brandDiv row">
+                    <h6 class="col-4">Brand Name: </h6>
+                    <h6 class="col-8">${mkupItem.brand}</h6>
+                </div>
+                <div class="itemDiv row">
+                    <h6 class="col-4">Item Name: </h6>
+                    <h6 class="col-8">${mkupItem.name}</h6>
+                </div>
+                <div class="colorCountDiv row">
+                    <h6 class="col-4">Shades available: </h6>
+                    <h6 class="col-8">${mkupItem.product_colors.length}</h6>
+                </div>
+                <div class="priceDiv row">
+                    <h6 class="col-4">Price: </h6>
+                    <h6 class="col-8">${mkupItem.price_sign}${mkupItem.price} (${mkupItem.currency})</h6>
+                </div>
+            </div>`;
+        resultDisplayDiv.appendChild(cardDiv);
+    });
+    document.getElementById('displayResultsDiv').append(resultDisplayDiv);
+}
+
+
+getSearchResultsByParameter(typesOfSearchParams[0], "maybelline");
