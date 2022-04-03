@@ -153,19 +153,21 @@ async function displayHomePage(baseUrl){
 
 async function getSearchResultsByParameter(searchParameter, searchString){
     let requestUrl = baseUrl;
-    switch (searchParameter){
-        case typesOfSearchParams[0]:
-            requestUrl += ('?' + typesOfSearchParams[0] + '=' + searchString);
-            break;
-        case typesOfSearchParams[1]:
-            requestUrl += ('?' + typesOfSearchParams[1] + '=' + searchString);
-            break;
-        case typesOfSearchParams[2]:
-            requestUrl += ('?' + typesOfSearchParams[2] + '=' + searchString);
-            break;
-        default:
-            requestUrl += ('?' + typesOfSearchParams[0] + '=' + searchString);
-            break;
+    if(searchString != '*'){
+        switch (searchParameter){
+            case typesOfSearchParams[0]:
+                requestUrl += ('?' + typesOfSearchParams[0] + '=' + searchString);
+                break;
+            case typesOfSearchParams[1]:
+                requestUrl += ('?' + typesOfSearchParams[1] + '=' + searchString);
+                break;
+            case typesOfSearchParams[2]:
+                requestUrl += ('?' + typesOfSearchParams[2] + '=' + searchString);
+                break;
+            default:
+                requestUrl += ('?' + typesOfSearchParams[0] + '=' + searchString);
+                break;
+        }
     }
     try{
         console.log(requestUrl);
@@ -182,61 +184,88 @@ async function getSearchResultsByParameter(searchParameter, searchString){
 }
 
 function displayResults(responseJson){
-    let resultDisplayDiv = document.createElement('div');
-    resultDisplayDiv.className = 'row';
-    resultDisplayDiv.id = 'displayArea'
-    console.log(responseJson.length);
-    responseJson.forEach((mkupItem) => {        
-        let cardDiv = document.createElement('div');
-        cardDiv.className = 'cardDiv col-sm-12 col-md-6 col-lg-4';
-        let priceDivText = '';
-        if(mkupItem.price_sign == null){
-            if(mkupItem.currency == null){
-                priceDivText = mkupItem.price;
+    if(responseJson.length === 0){
+        alert("No matching results found, please try with a different input!");
+    }
+    else{
+        if(document.getElementById('displayArea') != null){
+            document.getElementById('displayArea').remove();
+        }
+        
+        let resultDisplayDiv = document.createElement('div');
+        resultDisplayDiv.className = 'row';
+        resultDisplayDiv.id = 'displayArea'
+        console.log(responseJson.length);
+        responseJson.forEach((mkupItem) => {        
+            let cardDiv = document.createElement('div');
+            cardDiv.className = 'cardDiv col-sm-12 col-md-6 col-lg-4';
+            let priceDivText = '';
+            if(mkupItem.price_sign == null){
+                if(mkupItem.currency == null){
+                    priceDivText = mkupItem.price;
+                }
+                else{
+                    priceDivText = mkupItem.price + ' (' + mkupItem.currency + ')';
+                }
             }
             else{
-                priceDivText = mkupItem.price + '' + mkupItem.currency;
+                if(mkupItem.currency == null){
+                    priceDivText = mkupItem.price_sign + mkupItem.price;
+                }
+                else{
+                    priceDivText = mkupItem.price_sign + mkupItem.price + ' (' + mkupItem.currency + ')';
+                }
             }
-        }
-        else{
-            if(mkupItem.currency == null){
-                priceDivText = mkupItem.price_sign + mkupItem.price;
-            }
-            else{
-                priceDivText = mkupItem.price_sign + mkupItem.price + '' + mkupItem.currency;
-            }
-        }
-        cardDiv.innerHTML = 
-            `<div class = "imageDiv">
-                <img src=${mkupItem.image_link} alt=${mkupItem.brand + " " + mkupItem.name} width="250" height="250">
-            </div>
-            <div class="detailsDiv">
-                <div class="brandDiv row">
-                    <h6 class="col-4">Brand Name: </h6>
-                    <h6 class="col-8">${mkupItem.brand}</h6>
+            cardDiv.innerHTML = 
+                `<div class = "imageDiv">
+                    <img src=${mkupItem.image_link} alt=${mkupItem.brand + " " + mkupItem.name} width="250" height="250">
                 </div>
-                <div class="itemDiv row">
-                    <h6 class="col-4">Item Name: </h6>
-                    <h6 class="col-8">${mkupItem.name}</h6>
-                </div>
-                <div class="colorCountDiv row">
-                    <h6 class="col-4">Shades available: </h6>
-                    <h6 class="col-8">${mkupItem.product_colors.length}</h6>
-                </div>
-                <div class="priceDiv row">
-                    <h6 class="col-4">Price: </h6>
-                    <h6 class="col-8">${priceDivText}</h6>
-                </div>
-            </div>`;
-            console.log(priceDivText);
-        resultDisplayDiv.appendChild(cardDiv);
-    });
-    document.getElementById('displayResultsDiv').append(resultDisplayDiv);
+                <div class="detailsDiv">
+                    <div class="brandDiv row">
+                        <h6 class="col-4">Brand Name: </h6>
+                        <h6 class="col-8">${mkupItem.brand}</h6>
+                    </div>
+                    <div class="itemDiv row">
+                        <h6 class="col-4">Item Name: </h6>
+                        <h6 class="col-8">${mkupItem.name}</h6>
+                    </div>
+                    <div class="colorCountDiv row">
+                        <h6 class="col-4">Shades available: </h6>
+                        <h6 class="col-8">${mkupItem.product_colors.length}</h6>
+                    </div>
+                    <div class="priceDiv row">
+                        <h6 class="col-4">Price: </h6>
+                        <h6 class="col-8">${priceDivText}</h6>
+                    </div>
+                </div>`;
+                //console.log(priceDivText);
+            resultDisplayDiv.appendChild(cardDiv);
+        });
+        document.getElementById('displayResultsDiv').append(resultDisplayDiv);
+    }
+    
 }
 
-getSearchResultsByParameter(typesOfSearchParams[0], "maybelline")
-.then((displayResultsJson) => {
-    console.log('displayResultsJson');
-    console.log(displayResultsJson);
-    displayResults(displayResultsJson);
-});
+function searchInputHandler(){
+    console.log("Search btn click registered");
+    let searchParamRadioGrp = document.getElementById('btnGrpRadio_searchParameters');
+    let selectedOption = 0;
+    for(i=0; i< searchParamRadioGrp.length; i++){
+        if(searchParamRadioGrp[i].checked){
+            selectedOption = i;
+            break;
+        }
+    }
+    const searchString = document.getElementById('searchField').value;
+    
+    getSearchResultsByParameter(typesOfSearchParams[selectedOption], searchString)
+        .then((displayResultsJson) => {
+            console.log('displayResultsJson');
+            console.log(displayResultsJson);
+            displayResults(displayResultsJson);
+        });
+
+}
+
+searchBtn = document.getElementById('searchButton');
+searchBtn.addEventListener('click', searchInputHandler);
