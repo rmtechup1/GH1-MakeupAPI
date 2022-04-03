@@ -99,7 +99,7 @@ function displayResults(responseJson){
 
 function searchInputHandler(){
     console.log("Search initiated");
-    let searchParamRadioGrp = document.getElementById('btnGrpRadio_searchParameters');
+    let searchParamRadioGrp = document.getElementsByName('btnradio_srchParam');
     let selectedOption = 0;
     for(i=0; i< searchParamRadioGrp.length; i++){
         if(searchParamRadioGrp[i].checked){
@@ -119,8 +119,54 @@ function searchInputHandler(){
 
 }
 
+
+// function attachTagsAsDataListToSearchField(){
+//     console.log("Product Tags radio button selected");
+//     const listIdentifier = 'searchTagList';
+
+//     searchField = document.getElementById('searchField');
+//     searchField.setAttribute('list',listIdentifier);
+
+//     tagDataList = document.createElement('datalist');
+//     tagDataList.id = listIdentifier;
+
+//     tagDataList.innerHTML = 
+//         `<option value="Canadian">
+//         <option value="CertClean">
+//         <option value="Chemical Free">
+//         <option value="Dairy Free">
+//         <option value="EWG Verified">
+//         <option value="EcoCert">
+//         <option value="Fair Trade">
+//         <option value="Gluten Free">
+//         <option value="Hypoallergenic">
+//         <option value="Natural">
+//         <option value="No Talc">
+//         <option value="Non-GMO">
+//         <option value="Organic">
+//         <option value="Peanut Free Product">
+//         <option value="Sugar Free">
+//         <option value="USDA Organic">
+//         <option value="Vegan">
+//         <option value="alcohol free">
+//         <option value="cruelty free">
+//         <option value="oil free">
+//         <option value="purpicks">
+//         <option value="silicone free">
+//         <option value="water free">`;
+
+//     searchField.parentElement.appendChild(tagDataList);
+// }
+
+// productTagsBtn = document.getElementById('btnradio_product_tags');
+// productTagsBtn.addEventListener('click', attachTagsAsDataListToSearchField);
+
 searchBtn = document.getElementById('searchButton');
 searchBtn.addEventListener('click', searchInputHandler);
+// searchBtn.addEventListener('click', () => {
+//     document.getElementById('searchTagList').remove(); // remove the datalist element itself
+//     document.getElementById('searchField').removeAttribute('list'); // remove the 'list' attribute
+// });
 document.getElementById('searchField').addEventListener('keyup', function(event){
     if (event.key === "Enter") {
         console.log("Registered enter key press");
