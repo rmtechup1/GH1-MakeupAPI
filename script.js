@@ -69,7 +69,7 @@ function displayResults(responseJson){
             }
             cardDiv.innerHTML = 
                 `<div class = "imageDiv">
-                    <img src=${mkupItem.image_link} alt=${mkupItem.brand + " " + mkupItem.name} width="250" height="250">
+                    <img src=${mkupItem.image_link} alt="Image Alt Text: ${mkupItem.brand + " " + mkupItem.name}" width="250" height="250">
                 </div>
                 <div class="detailsDiv">
                     <div class="brandDiv row">
