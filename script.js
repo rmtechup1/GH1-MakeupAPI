@@ -186,9 +186,26 @@ function displayResults(responseJson){
     resultDisplayDiv.className = 'row';
     resultDisplayDiv.id = 'displayArea'
     console.log(responseJson.length);
-    responseJson.forEach(mkupItem => {        
+    responseJson.forEach((mkupItem) => {        
         let cardDiv = document.createElement('div');
         cardDiv.className = 'cardDiv col-sm-12 col-md-6 col-lg-4';
+        let priceDivText = '';
+        if(mkupItem.price_sign == null){
+            if(mkupItem.currency == null){
+                priceDivText = mkupItem.price;
+            }
+            else{
+                priceDivText = mkupItem.price + '' + mkupItem.currency;
+            }
+        }
+        else{
+            if(mkupItem.currency == null){
+                priceDivText = mkupItem.price_sign + mkupItem.price;
+            }
+            else{
+                priceDivText = mkupItem.price_sign + mkupItem.price + '' + mkupItem.currency;
+            }
+        }
         cardDiv.innerHTML = 
             `<div class = "imageDiv">
                 <img src=${mkupItem.image_link} alt=${mkupItem.brand + " " + mkupItem.name} width="250" height="250">
@@ -208,15 +225,18 @@ function displayResults(responseJson){
                 </div>
                 <div class="priceDiv row">
                     <h6 class="col-4">Price: </h6>
-                    <h6 class="col-8">${mkupItem.price_sign}${mkupItem.price} (${mkupItem.currency})</h6>
+                    <h6 class="col-8">${priceDivText}</h6>
                 </div>
             </div>`;
-            console.log(cardDiv);
+            console.log(priceDivText);
         resultDisplayDiv.appendChild(cardDiv);
     });
     document.getElementById('displayResultsDiv').append(resultDisplayDiv);
 }
 
-const displayResultsJson = getSearchResultsByParameter(typesOfSearchParams[0], "maybelline");
-console.log(displayResultsJson);
-displayResults(displayResultsJson);
+getSearchResultsByParameter(typesOfSearchParams[0], "maybelline")
+.then((displayResultsJson) => {
+    console.log('displayResultsJson');
+    console.log(displayResultsJson);
+    displayResults(displayResultsJson);
+});
