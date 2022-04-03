@@ -121,7 +121,7 @@ function searchInputHandler(){
 searchBtn = document.getElementById('searchButton');
 searchBtn.addEventListener('click', searchInputHandler);
 document.getElementById('searchField').addEventListener('keyup', function(event){
-    if (event.keyCode === 13) {
+    if (event.key === "Enter") {
         console.log("Registered enter key press");
         //event.preventDefault();
         searchBtn.click();
