@@ -1,10 +1,103 @@
 const baseUrl = "http://makeup-api.herokuapp.com/api/v1/products.json";
 const typesOfSearchParams = ['brand', 'product_type', 'product_tags']
+const searchParamDatalist_innerHtml = {
+    brand: `<option value="almay">
+    <option value="alva">
+    <option value="anna sui">
+    <option value="annabelle">
+    <option value="benefit">
+    <option value="boosh">
+    <option value="burt's bees">
+    <option value="butter london">
+    <option value="c'est moi">
+    <option value="cargo cosmetics">
+    <option value="china glaze">
+    <option value="clinique">
+    <option value="coastal classic creation">
+    <option value="colourpop">
+    <option value="covergirl">
+    <option value="dalish">
+    <option value="deciem">
+    <option value="dior">
+    <option value="dr. hauschka">
+    <option value="e.l.f.">
+    <option value="essie">
+    <option value="fenty">
+    <option value="glossier">
+    <option value="green people">
+    <option value="iman">
+    <option value="l'oreal">
+    <option value="lotus cosmetics usa">
+    <option value="maia's mineral galaxy">
+    <option value="marcelle">
+    <option value="marienatie">
+    <option value="maybelline">
+    <option value="milani">
+    <option value="mineral fusion">
+    <option value="misa">
+    <option value="mistura">
+    <option value="moov">
+    <option value="nudus">
+    <option value="nyx">
+    <option value="orly">
+    <option value="pacifica">
+    <option value="penny lane organics">
+    <option value="physicians formula">
+    <option value="piggy paint">
+    <option value="pure anada">
+    <option value="rejuva minerals">
+    <option value="revlon">
+    <option value="sally b's skin yummies">
+    <option value="salon perfect">
+    <option value="sante">
+    <option value="sinful colours">
+    <option value="smashbox">
+    <option value="stila">
+    <option value="suncoat">
+    <option value="w3llpeople">
+    <option value="wet n wild">
+    <option value="zorah">
+    <option value="zorah biocosmetiques">`,
 
+    product_type: `<option value="Blush">
+    <option value="Bronzer">
+    <option value="Eyebrow">
+    <option value="Eyeliner">
+    <option value="Eyeshadow">
+    <option value="Foundation">
+    <option value="Lip liner">
+    <option value="Lipstick">
+    <option value="Mascara">
+    <option value="Nail Polish">`,
+
+    product_tags: `<option value="Canadian">
+    <option value="CertClean">
+    <option value="Chemical Free">
+    <option value="Dairy Free">
+    <option value="EWG Verified">
+    <option value="EcoCert">
+    <option value="Fair Trade">
+    <option value="Gluten Free">
+    <option value="Hypoallergenic">
+    <option value="Natural">
+    <option value="No Talc">
+    <option value="Non-GMO">
+    <option value="Organic">
+    <option value="Peanut Free Product">
+    <option value="Sugar Free">
+    <option value="USDA Organic">
+    <option value="Vegan">
+    <option value="alcohol free">
+    <option value="cruelty free">
+    <option value="oil free">
+    <option value="purpicks">
+    <option value="silicone free">
+    <option value="water free">`
+};
 
 async function getSearchResultsByParameter(searchParameter, searchString){
     let requestUrl = baseUrl;
-    if(searchString != '*'){
+    if(searchString != '*' && searchString.length != 0){
         switch (searchParameter){
             case typesOfSearchParams[0]:
                 requestUrl += ('?' + typesOfSearchParams[0] + '=' + searchString);
@@ -114,54 +207,8 @@ function searchInputHandler(){
 
 }
 
-
-// function attachTagsAsDataListToSearchField(){
-//     console.log("Product Tags radio button selected");
-//     const listIdentifier = 'searchTagList';
-
-//     searchField = document.getElementById('searchField');
-//     searchField.setAttribute('list',listIdentifier);
-
-//     tagDataList = document.createElement('datalist');
-//     tagDataList.id = listIdentifier;
-
-//     tagDataList.innerHTML = 
-//         `<option value="Canadian">
-//         <option value="CertClean">
-//         <option value="Chemical Free">
-//         <option value="Dairy Free">
-//         <option value="EWG Verified">
-//         <option value="EcoCert">
-//         <option value="Fair Trade">
-//         <option value="Gluten Free">
-//         <option value="Hypoallergenic">
-//         <option value="Natural">
-//         <option value="No Talc">
-//         <option value="Non-GMO">
-//         <option value="Organic">
-//         <option value="Peanut Free Product">
-//         <option value="Sugar Free">
-//         <option value="USDA Organic">
-//         <option value="Vegan">
-//         <option value="alcohol free">
-//         <option value="cruelty free">
-//         <option value="oil free">
-//         <option value="purpicks">
-//         <option value="silicone free">
-//         <option value="water free">`;
-
-//     searchField.parentElement.appendChild(tagDataList);
-// }
-
-// productTagsBtn = document.getElementById('btnradio_product_tags');
-// productTagsBtn.addEventListener('click', attachTagsAsDataListToSearchField);
-
 searchBtn = document.getElementById('searchButton');
 searchBtn.addEventListener('click', searchInputHandler);
-// searchBtn.addEventListener('click', () => {
-//     document.getElementById('searchTagList').remove(); // remove the datalist element itself
-//     document.getElementById('searchField').removeAttribute('list'); // remove the 'list' attribute
-// });
 document.getElementById('searchField').addEventListener('keyup', function(event){
     if (event.key === "Enter") {
         console.log("Registered enter key press");
@@ -169,3 +216,38 @@ document.getElementById('searchField').addEventListener('keyup', function(event)
         searchBtn.click();
     }
 });
+
+function srchRadioGrpDelegatedHandler(event){
+    let target = event.target;
+    const listIdentifier = 'list__' + target.id;
+
+    searchField = document.getElementById('searchField');
+    searchField.removeAttribute('list');
+    searchField.setAttribute('list', listIdentifier);
+
+    if(document.getElementById(listIdentifier) != null){
+        document.getElementById(listIdentifier).remove(); //remove the stale datalist element if it already exists
+    }
+
+    tagDataList = document.createElement('datalist');
+    tagDataList.id = listIdentifier;
+    switch(target.id){
+        case 'btnradio_brand':
+            tagDataList.innerHTML = searchParamDatalist_innerHtml.brand;
+            break;
+        case 'btnradio_product_type':
+            tagDataList.innerHTML = searchParamDatalist_innerHtml.product_type;
+            break;
+        case 'btnradio_product_tags':
+            tagDataList.innerHTML = searchParamDatalist_innerHtml.product_tags;
+            break;
+        default:
+            tagDataList.innerHTML = searchParamDatalist_innerHtml.brand;
+            break;
+    }
+    searchField.parentElement.appendChild(tagDataList);
+}
+
+searchRadioGrp_Parent = document.getElementById('btnRadioGrp_parentElem');
+searchRadioGrp_Parent.addEventListener('click', srchRadioGrpDelegatedHandler);
+document.getElementById('searchField').addEventListener('click', srchRadioGrpDelegatedHandler);
