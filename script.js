@@ -224,6 +224,7 @@ function srchRadioGrpDelegatedHandler(event){
     searchField = document.getElementById('searchField');
     searchField.removeAttribute('list');
     searchField.setAttribute('list', listIdentifier);
+    searchField.value = '';
 
     if(document.getElementById(listIdentifier) != null){
         document.getElementById(listIdentifier).remove(); //remove the stale datalist element if it already exists
@@ -250,4 +251,3 @@ function srchRadioGrpDelegatedHandler(event){
 
 searchRadioGrp_Parent = document.getElementById('btnRadioGrp_parentElem');
 searchRadioGrp_Parent.addEventListener('click', srchRadioGrpDelegatedHandler);
-document.getElementById('searchField').addEventListener('click', srchRadioGrpDelegatedHandler);
