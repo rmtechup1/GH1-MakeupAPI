@@ -23,7 +23,6 @@ async function getSearchResultsByParameter(searchParameter, searchString){
     try{
         console.log("Hitting the URL: " + requestUrl);
         const response = await fetch(requestUrl, { method: 'GET', mode: "cors"});
-        console.log(response);
         let respJson = await response.json();
         console.log(respJson);
         return respJson;
@@ -46,7 +45,6 @@ function displayResults(responseJson){
         let resultDisplayDiv = document.createElement('div');
         resultDisplayDiv.className = 'row';
         resultDisplayDiv.id = 'displayArea'
-        console.log(responseJson.length);
         responseJson.forEach((mkupItem) => {        
             let cardDiv = document.createElement('div');
             cardDiv.className = 'cardDiv col-sm-12 col-md-6 col-lg-4';
@@ -89,7 +87,6 @@ function displayResults(responseJson){
                         <h6 class="col-8">${priceDivText}</h6>
                     </div>
                 </div>`;
-                //console.log(priceDivText);
             resultDisplayDiv.appendChild(cardDiv);
         });
         document.getElementById('displayResultsDiv').append(resultDisplayDiv);
@@ -112,8 +109,6 @@ function searchInputHandler(){
     
     getSearchResultsByParameter(typesOfSearchParams[selectedOption], searchString)
         .then((displayResultsJson) => {
-            console.log('displayResultsJson');
-            console.log(displayResultsJson);
             displayResults(displayResultsJson);
         });
 
