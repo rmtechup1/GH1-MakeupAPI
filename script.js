@@ -108,6 +108,7 @@ function searchInputHandler(){
         }
     }
     const searchString = document.getElementById('searchField').value;
+    console.log("Selected Search Param: " + typesOfSearchParams[selectedOption]);
     
     getSearchResultsByParameter(typesOfSearchParams[selectedOption], searchString)
         .then((displayResultsJson) => {
