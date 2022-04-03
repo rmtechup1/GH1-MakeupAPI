@@ -247,7 +247,7 @@ function displayResults(responseJson){
 }
 
 function searchInputHandler(){
-    console.log("Search btn click registered");
+    console.log("Search initiated");
     let searchParamRadioGrp = document.getElementById('btnGrpRadio_searchParameters');
     let selectedOption = 0;
     for(i=0; i< searchParamRadioGrp.length; i++){
@@ -269,3 +269,10 @@ function searchInputHandler(){
 
 searchBtn = document.getElementById('searchButton');
 searchBtn.addEventListener('click', searchInputHandler);
+document.getElementById('searchField').addEventListener('keyup', function(event){
+    if (event.keyCode === 13) {
+        console.log("Registered enter key press");
+        //event.preventDefault();
+        searchBtn.click();
+    }
+});
