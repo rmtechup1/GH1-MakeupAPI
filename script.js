@@ -207,8 +207,8 @@ function searchInputHandler(){
 
 }
 
-searchBtn = document.getElementById('searchButton');
-searchBtn.addEventListener('click', searchInputHandler);
+document.getElementById('searchButton').addEventListener('click', searchInputHandler);
+
 document.getElementById('searchField').addEventListener('keyup', function(event){
     if (event.key === "Enter") {
         console.log("Registered enter key press");
@@ -249,5 +249,4 @@ function srchRadioGrpDelegatedHandler(event){
     searchField.parentElement.appendChild(tagDataList);
 }
 
-searchRadioGrp_Parent = document.getElementById('btnRadioGrp_parentElem');
-searchRadioGrp_Parent.addEventListener('click', srchRadioGrpDelegatedHandler);
+document.getElementById('btnRadioGrp_parentElem').addEventListener('click', srchRadioGrpDelegatedHandler);
